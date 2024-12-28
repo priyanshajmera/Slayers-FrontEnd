@@ -1,0 +1,48 @@
+<header>
+    <div class="logo">
+      <h1>Slayrs</h1>
+    </div>
+    <nav>
+      <a routerLink="/upload-outfit">Upload Outfit</a>
+      <a routerLink="/wardrobe">Virtual Wardrobe</a>
+      <a routerLink="/edit-outfit">Edit Outfit</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <div class="card">
+      <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <img src="assets/images/uploadPic.jpeg" alt="Outfit Preview" />
+  
+        <label for="image" class="button">Upload Image</label>
+        <input
+          type="file"
+          id="image"
+          (change)="onFileChange($event)"
+          required
+        />
+  
+        <label for="category">Select a Category:</label>
+        <div id="category" class="category">
+          <label><input type="radio" formControlName="category" value="Top" /> Top</label>
+          <label><input type="radio" formControlName="category" value="Bottom" /> Bottom</label>
+          <label><input type="radio" formControlName="category" value="Dress" /> Dress</label>
+          <label><input type="radio" formControlName="category" value="Accessories" /> Accessories</label>
+        </div>
+  
+        <label for="tags">Tags</label>
+        <input
+          type="text"
+          id="tags"
+          formControlName="tags"
+          placeholder="Add tags separated by commas"
+        />
+  
+        <button type="submit" [disabled]="uploadForm.invalid" class="submit-button">Submit Outfit</button>
+  
+        <div *ngIf="uploadSuccess" class="success">{{ uploadSuccess }}</div>
+        <div *ngIf="uploadError" class="error">{{ uploadError }}</div>
+      </form>
+    </div>
+  </div>
+  

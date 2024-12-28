@@ -1,0 +1,40 @@
+<div class="form-container">
+  <h2>Create Your Account</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <label for="username">Name</label>
+    <input type="text" id="username" formControlName="username" placeholder="Enter your username" required />
+    <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].invalid">
+      <small class="error-text">Username must be at least 3 characters long.</small>
+    </div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" placeholder="Enter your email" required />
+    
+    <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].invalid">
+      <small class="error-text">Please enter a valid email address.</small>
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter your password" formControlName="password" required 
+    placeholder="Enter your password"
+    />
+    <div *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
+      <small class="error-text">
+        Password must be at least 6 characters long.
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    <div *ngIf="signupError" class="error-text">{{ signupError }}</div>
+  </form>
+</div>
+<div class="image-section">
+  <img src="assets/images/signup.jpeg" alt="Wardrobe Illustration">
+</div>
+<footer>
+  <p>
+    &copy; 2023 Slayrs. All rights reserved.
+    <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> |
+    <a href="#">Support</a>
+  </p>
+</footer>
