@@ -34,7 +34,7 @@ export class UploadOutfitComponent {
   onSubmit(): void {
     if (this.uploadForm.valid) {
       const formData = new FormData();
-      formData.append('user_id', '1'); // Replace with actual user ID if available
+
       formData.append('image', this.uploadForm.get('image')!.value);
       formData.append('category', this.uploadForm.get('category')!.value);
       formData.append('tags', this.uploadForm.get('tags')!.value || '');
