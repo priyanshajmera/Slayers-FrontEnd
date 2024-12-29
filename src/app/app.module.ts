@@ -9,7 +9,8 @@ import { WardrobeComponent } from './components/wardrobe/wardrobe.component';
 import { UploadOutfitComponent } from './components/upload-outfit/upload-outfit.component';
 import { EditOutfitComponent } from './components/edit-outfit/edit-outfit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,12 @@ import { HttpClientModule } from '@angular/common/http';
     
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true, // Allow multiple interceptors if needed
+    },
   ],
   bootstrap: [AppComponent]
 })

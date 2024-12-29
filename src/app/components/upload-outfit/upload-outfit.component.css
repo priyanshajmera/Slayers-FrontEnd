@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Source Sans Pro, sans-serif;
+    font-family: Source Sans Pro, Source Sans Pro;
     background-color: #f9f9f9;
 }
 
@@ -10,6 +10,11 @@ header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
     align-items: center;
 }
 
@@ -51,11 +56,39 @@ header nav a:hover {
 }
 
 .card img {
-    margin: 20px auto;
+    margin-left: 45px;
+    margin-right: 20px;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-right: 26px;
+    margin-left: 35px;
+
+}
+
+.card button:hover {
+    background-color: #584ac1;
+}
+
+.card label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 5px;
+    text-align: left;
 }
 
 .card .category {
@@ -64,7 +97,17 @@ header nav a:hover {
     margin-bottom: 20px;
 }
 
-.card input[type='text'] {
+.card .category label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card .category input {
+    margin: 0;
+}
+
+.card input[type="text"] {
     width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
@@ -81,18 +124,9 @@ header nav a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-left: 26px;
 }
 
 .card .submit-button:hover {
     background-color: #584ac1;
-}
-
-.success {
-    color: green;
-    margin-top: 10px;
-}
-
-.error {
-    color: red;
-    margin-top: 10px;
 }
