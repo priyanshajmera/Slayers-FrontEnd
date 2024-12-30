@@ -7,11 +7,13 @@ import { WardrobeComponent } from './components/wardrobe/wardrobe.component';
 import { UploadOutfitComponent } from './components/upload-outfit/upload-outfit.component';
 import { EditOutfitComponent } from './components/edit-outfit/edit-outfit.component';
 import { noAuthGuard } from './Guards/no-auth.guard';
-import { authGuard} from './Guards/auth.guard';
+import { authGuard } from './Guards/auth.guard';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: 'landing', component: LandingComponent },
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent, canActivate: [noAuthGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [noAuthGuard] },
   { path: 'wardrobe', component: WardrobeComponent, canActivate: [authGuard] },

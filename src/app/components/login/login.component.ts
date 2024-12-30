@@ -7,10 +7,8 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
   loginError: string | null = null;
 
@@ -34,18 +32,17 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
 
       // Perform API call to authenticate the user
-      this.http
-        .post(this.apiUrl, { email, password })
-        .subscribe({
-          next: (response: any) => {
-            // Save the token to localStorage and navigate to home
-            localStorage.setItem('token', response.token);
-            this.router.navigate(['/home']);
-          },
-          error: (error: any) => {
-            this.loginError = error.error?.message || 'Login failed. Please try again.';
-          },
-        });
+      this.http.post(this.apiUrl, { email, password }).subscribe({
+        next: (response: any) => {
+          // Save the token to localStorage and navigate to home
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/home']);
+        },
+        error: (error: any) => {
+          this.loginError =
+            error.error?.message || 'Login failed. Please try again.';
+        },
+      });
     }
   }
 }

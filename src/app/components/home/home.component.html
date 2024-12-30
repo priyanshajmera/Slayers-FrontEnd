@@ -1,13 +1,28 @@
 <div class="container">
-    <div class="image-container">
-        <img src="assets/images/signin.jpeg" alt="Fashion Illustration">
+    <div class="card">
+        <img src="../../../assets/images/uploadPic.jpeg" alt="Upload Outfit" />
+        <h2>Upload Outfit</h2>
+        <p>Easily upload new outfits to your wardrobe!</p>
+        <button (click)="navigateTo('upload-outfit')">Get Started</button>
     </div>
-    <div class="content">
-        <h1>Slayrs</h1>
-        <p>Rise and slay—every outfit, every day.</p>
-        <div class="buttons">
-            <button routerLink="/login">Login</button>
-            <button routerLink="/signup">Sign Up</button>
-        </div>
+
+    <div class="card">
+        <img src="../../../assets/images/WardrobePic.jpeg" alt="Organize Outfits" />
+        <h2>Organize Outfits</h2>
+        <p>Sort your outfits by season, style, or occasion!</p>
+        <button (click)="navigateTo('wardrobe')">Get Started</button>
     </div>
 </div>
+
+<footer>
+    <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="social-icons">
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Facebook" /></a>
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Twitter" /></a>
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Instagram" /></a>
+    </div>
+</footer>

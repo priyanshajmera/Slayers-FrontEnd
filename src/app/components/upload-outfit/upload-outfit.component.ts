@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-outfit',
@@ -14,7 +15,7 @@ export class UploadOutfitComponent {
 
   private apiUrl = 'http://localhost:3000/upload'; // Replace with your API endpoint
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
     this.uploadForm = this.fb.group({
       image: [null, Validators.required],
       category: ['', Validators.required],
@@ -43,6 +44,7 @@ export class UploadOutfitComponent {
         next: () => {
           this.uploadSuccess = 'Outfit uploaded successfully!';
           this.uploadForm.reset();
+          this.router.navigate(['/wardrobe']);
         },
         error: (err: any) => {
           this.uploadError =

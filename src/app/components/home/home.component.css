@@ -1,63 +1,117 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Source Sans Pro, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    background-color: #6c63ff;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header .logo h1 {
+    margin: 0;
+  }
+  
+  header nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #ffffff;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-}
-
-.image-container {
-    flex: 1;
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-}
-
-.content {
-    flex: 1;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  
+  .card {
+    margin-top: 119px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 20px;
-}
-
-.content h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-
-.content p {
-    font-size: 1.2em;
+    width: 300px;
+  }
+  
+  .card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .card p {
+    font-size: 14px;
     color: #555;
     margin-bottom: 20px;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.buttons button {
+  }
+  
+  .card button {
     background-color: #6c63ff;
-    color: #ffffff;
+    color: white;
     border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    font-size: 1em;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.buttons button:hover {
-    background-color: #4c47cc;
-}
+    font-size: 16px;
+    border-radius: 22px;
+  }
+  
+  .card button:hover {
+    background-color: #584ac1;
+  }
+  
+  footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 209px;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  footer a {
+    color: #6c63ff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  footer .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+  

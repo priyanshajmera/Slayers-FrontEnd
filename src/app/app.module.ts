@@ -11,6 +11,7 @@ import { EditOutfitComponent } from './components/edit-outfit/edit-outfit.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     SignupComponent,
     WardrobeComponent,
     UploadOutfitComponent,
-    EditOutfitComponent
+    EditOutfitComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
