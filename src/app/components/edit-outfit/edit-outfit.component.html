@@ -1,43 +1,69 @@
-<header>
-    <div class="logo">Slayrs</div>
+<div class="container">
+  <header>
+    
     <div class="header-buttons">
-      <button class="btn save" (click)="onSubmit()">Save Changes</button>
-      <button class="btn cancel" routerLink="/wardrobe">Cancel</button>
+      <button class="btn save" (click)="saveChanges()">Save Changes</button>
+      <button class="btn cancel" (click)="cancel()">Cancel</button>
     </div>
   </header>
-  
+
   <main class="main-content">
     <div class="left-panel">
       <div class="image-card">
-        <img src="../../../assets/images/uploadPic.jpeg" alt="Outfit" class="outfit-image" />
-        <p class="outfit-name">Edit Outfit</p>
+        <img [src]="outfit.imageUrl" alt="Outfit" class="outfit-image" />
+        <p class="outfit-name">{{ outfit.name }}</p>
       </div>
     </div>
     <div class="right-panel">
-      <form [formGroup]="editForm">
-        <div class="tags-section">
-          <h2>Tags</h2>
-          <input
-            type="text"
-            formControlName="tags"
-            placeholder="Enter tags separated by commas"
-          />
+      <div class="tags-section">
+        <h2>Tags</h2>
+        <input type="text" [(ngModel)]="outfit.tags" class="tags-input" />
+        
+      </div>
+      <div class="category-section">
+        <h2>Category</h2>
+        <div class="radio-group">
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value="Top"
+              [(ngModel)]="outfit.category"
+            />
+            Top
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value="Bottom"
+              [(ngModel)]="outfit.category"
+            />
+            Bottom
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value="Dress"
+              [(ngModel)]="outfit.category"
+            />
+            Dress
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value="Accessories"
+              [(ngModel)]="outfit.category"
+            />
+            Accessories
+          </label>
         </div>
-        <div class="category-section">
-          <h2>Category</h2>
-          <div class="radio-group">
-            <label><input type="radio" formControlName="category" value="Top" /> Top</label>
-            <label><input type="radio" formControlName="category" value="Bottom" /> Bottom</label>
-            <label><input type="radio" formControlName="category" value="Dress" /> Dress</label>
-            <label><input type="radio" formControlName="category" value="Accessories" /> Accessories</label>
-          </div>
-        </div>
-      </form>
+      </div>
       <div class="delete-section">
         <button class="btn delete" (click)="deleteOutfit()">Delete Outfit</button>
       </div>
-      <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
     </div>
   </main>
-  
+</div>

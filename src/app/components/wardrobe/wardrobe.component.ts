@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { WardrobeService } from '../../Services/wardrobe.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-wardrobe',
@@ -11,7 +13,7 @@ export class WardrobeComponent {
   wardrobe: { [category: string]: any[] } = {};
   error: string | null = null;
 
-  constructor(private wardrobeService: WardrobeService) {}
+  constructor(private wardrobeService: WardrobeService,private router:Router) {}
 
   ngOnInit(): void {
     this.loadWardrobe();
@@ -33,19 +35,22 @@ export class WardrobeComponent {
   }
 
   deleteOutfit(id: number): void {
-    this.wardrobeService.deleteOutfit(id).subscribe({
-      next: () => {
-        alert('Outfit deleted successfully');
-        this.loadWardrobe();
-      },
-      error: () => {
-        alert('Failed to delete outfit. Please try again.');
-      },
-    });
+    if (confirm('Are you sure you want to delete this outfit?')) {
+      this.wardrobeService.deleteOutfit(id).subscribe({
+        next: () => {
+          alert('Outfit deleted successfully');
+          this.loadWardrobe();
+        },
+        error: () => {
+          alert('Failed to delete outfit. Please try again.');
+        },
+      });
+    }
+    
   }
 
   editOutfit(id: number): void {
-    alert(`Redirecting to edit page for outfit ID: ${id}`);
+    this.router.navigate(['/edit-outfit', id]);
     // Implement navigation or inline editing logic as needed
   }
 

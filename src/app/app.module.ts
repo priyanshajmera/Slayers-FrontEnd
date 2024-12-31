@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { LandingComponent } from './components/landing/landing.component';
+import { OutfitDetailComponent } from './components/outfit-detail/outfit-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LandingComponent } from './components/landing/landing.component';
     WardrobeComponent,
     UploadOutfitComponent,
     EditOutfitComponent,
-    LandingComponent
+    LandingComponent,
+    OutfitDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   signupError: string | null = null;
 
-  private apiUrl = 'http://localhost:3000/signup'; // Replace with your API endpoint
+  private apiUrl = environment.apiUrl+'/signup'; // Replace with your API endpoint
 
   constructor(
     private fb: FormBuilder,

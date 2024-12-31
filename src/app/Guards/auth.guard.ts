@@ -10,7 +10,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true; // Allow access if the token is valid and not expired
   }
 
-  return router.createUrlTree(['/login']); // Redirect to login if not authenticated
+  return router.navigate(['/login']); // Redirect to login if not authenticated
 };
 
 // Helper function to check if the token is expired

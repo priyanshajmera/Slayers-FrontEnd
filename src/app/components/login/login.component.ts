@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   loginError: string | null = null;
 
-  private apiUrl = 'http://localhost:3000/signin'; // Replace with your API endpoint
+  private apiUrl = environment.apiUrl+'/signin'; // Replace with your API endpoint
 
   constructor(
     private fb: FormBuilder,
