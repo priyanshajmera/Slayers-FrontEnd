@@ -1,35 +1,28 @@
-# Use Node.js as the base image for building the app
+# Stage 1: Build Angular App
 FROM node:20.10.0 AS builder
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to install dependencies
 COPY package.json package-lock.json ./
 
-# Install dependencies
 RUN npm install --legacy-peer-deps
 
-# Copy the rest of the project files
 COPY . .
 
-# Build the Angular app in production mode
-RUN npm run build 
+RUN npm run build --prod
 
-# Use a lightweight Node.js image to serve the app
-FROM node:20.10.0-slim
+# Stage 2: Serve with Nginx
+FROM nginx:alpine
 
-# Set working directory
-WORKDIR /app
+# Remove the default Nginx configuration file
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy the built files from the builder stage
-COPY --from=builder /app/dist /app/dist
+# Copy custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Install the http-server package globally
-RUN npm install -g http-server
+# Copy Angular build output to Nginx's HTML folder
+COPY --from=builder /app/dist/slayers-front-end/browser /usr/share/nginx/html
 
-# Expose the port for the app
-EXPOSE 8080
+EXPOSE 80
 
-# Start the app with http-server
-CMD ["http-server", "/app/dist", "-p", "8080"]
+CMD ["nginx", "-g", "daemon off;"]

@@ -19,4 +19,6 @@ export class WardrobeService {
   deleteOutfit(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/outfits/${id}`);
   }
+
+  
 }

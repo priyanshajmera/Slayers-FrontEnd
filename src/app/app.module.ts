@@ -13,6 +13,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { LandingComponent } from './components/landing/landing.component';
 import { OutfitDetailComponent } from './components/outfit-detail/outfit-detail.component';
+import { OOTDComponent } from './components/ootd/ootd.component';
+import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { OutfitDetailComponent } from './components/outfit-detail/outfit-detail.
     UploadOutfitComponent,
     EditOutfitComponent,
     LandingComponent,
-    OutfitDetailComponent
+    OutfitDetailComponent,
+    OOTDComponent,
+    OOTDSuggestionComponent
   ],
   imports: [
     BrowserModule,

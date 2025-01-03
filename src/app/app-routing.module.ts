@@ -9,6 +9,8 @@ import { EditOutfitComponent } from './components/edit-outfit/edit-outfit.compon
 import { noAuthGuard } from './Guards/no-auth.guard';
 import { authGuard } from './Guards/auth.guard';
 import { LandingComponent } from './components/landing/landing.component';
+import { OOTDComponent } from './components/ootd/ootd.component';
+import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -25,6 +27,16 @@ const routes: Routes = [
   {
     path: 'edit-outfit/:id',
     component: EditOutfitComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'ootd',
+    component: OOTDComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'ootd-suggestions',
+    component: OOTDSuggestionComponent,
     canActivate: [authGuard],
   },
 ];

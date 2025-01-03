@@ -1,0 +1,28 @@
+<body>
+    <div class="container" *ngIf="cards.length > 0">
+        <div class="card" *ngFor="let card of cards; let i = index" [class.active]="currentCardIndex === i">
+          <h2>{{ card.title }}</h2>
+          <div class="images">
+            <div *ngFor="let item of card.items">
+              <h3>{{ item.key }}</h3>
+              <img [src]="item.clothId" alt="{{ item.key }}">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="nav-buttons">
+        <button (click)="prevCard()" [disabled]="currentCardIndex === 0">Previous</button>
+        <button (click)="nextCard()" [disabled]="currentCardIndex === cards.length - 1">Next</button>
+      </div>
+    
+      <div class="regenerate-button">
+        <button (click)="regenerateCards()">Regenerate</button>
+      </div>
+    
+      <footer>
+        <a href="#">Terms of Service</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Help</a>
+      </footer>
+</body>
