@@ -1,33 +1,25 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffffff;
-}
-
 .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 80%;
+    justify-content: space-evenly;
+    padding: 20px;
 }
 
-.image-container {
-    flex: 1;
-}
+
 
 .image-container img {
     max-width: 100%;
     height: auto;
+    border-radius: 30px
 }
 
 .content {
-    flex: 1;
+    
     text-align: center;
     padding: 20px;
+    width: 30%;
+
+
 }
 
 .content h1 {

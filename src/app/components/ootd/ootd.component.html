@@ -1,22 +1,14 @@
-<body>
-    
-    <div class="container">
-        <h1>Outfit Parameters</h1>
-        <p>Customize your outfit by selecting the parameters below.</p>
-
-        <div class="category" *ngFor="let category of categories">
-            <h2>{{ category.title }}</h2>
-            <div class="tags">
-                <div class="tag" *ngFor="let tag of category.tags" (click)="toggleSelection(tag)" [class.selected]="tag.selected">
-                    {{ tag.name }}
-                </div>
+<div class="container">
+    <h1>Outfit Parameters</h1>
+    <p>Customize your outfit by selecting the parameters below.</p>
+    <div class="category" *ngFor="let category of categories">
+        <h2>{{ category.title }}</h2>
+        <div class="tags">
+            <div class="tag" *ngFor="let tag of category.tags" (click)="toggleSelection(tag)"
+                [class.selected]="tag.selected">
+                {{ tag.name }}
             </div>
         </div>
     </div>
-
-    <button (click)="sendSelectedTagsToBackend()" class="submit-btn">Submit Selected Tags</button>
-
-    <footer>
-        <p>Privacy Policy | Terms of Service | Contact Us</p>
-    </footer>
-</body>
+</div>
+<button (click)="sendSelectedTagsToBackend()" class="submit-btn">Submit Selected Tags</button>

@@ -1,10 +1,4 @@
-body {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
+
 
 .container {
     max-width: 800px;
@@ -56,22 +50,7 @@ h1 {
     color: #fff;
 }
 
-footer {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-}
 
-footer a {
-    color: #4f46e5;
-    text-decoration: none;
-    margin: 0 5px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
 
 header {
     background-color: #4f46e5;

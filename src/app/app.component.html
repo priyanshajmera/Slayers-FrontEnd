@@ -1,3 +1,4 @@
+
 <header>
     <div class="logo">
         <h1>Slayrs</h1>
@@ -9,4 +10,20 @@
         <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
     </nav>
 </header>
-<router-outlet></router-outlet>
+<main>
+    
+    <router-outlet></router-outlet>
+    
+</main>
+<footer>
+    <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="social-icons">
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Facebook" /></a>
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Twitter" /></a>
+        <a href="#"><img src="https://via.placeholder.com/20" alt="Instagram" /></a>
+    </div>
+</footer>

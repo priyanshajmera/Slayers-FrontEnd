@@ -1,90 +1,49 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+.form-container {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  left: 50%;
+  margin-left: 35%;
+  width: 400px;
+  text-align: center;
   
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  header h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-container {
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    width: 400px;
-    text-align: center;
-  }
-  
-  .form-container h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .form-container label {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .form-container input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-  
-  .form-container button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .form-container button:hover {
-    background-color: #333;
-  }
-  
-  footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: #555;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-  }
-  
-  footer a {
-    color: #6c63ff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  footer a:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+.form-container h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.form-container label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-container button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form-container button:hover {
+  background-color: #333;
+}

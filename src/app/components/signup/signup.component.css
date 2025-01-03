@@ -1,20 +1,10 @@
-body {
-    margin: 0;
-    font-family: Source Sans Pro, Source Sans Pro;
-    background-color: #f9f9f9;
+.signup-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
-}
-
-header {
-    width: 100%;
-    background-color: #6c63ff;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
+    
+    background-color: #f9f9f9;
 }
 
 .form-container {
@@ -63,33 +53,4 @@ header {
 
 .form-container button:hover {
     background-color: #333;
-}
-
-.image-section {
-    margin-top: 40px;
-}
-
-.image-section img {
-    width: 300px;
-    max-width: 100%;
-}
-
-footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: #555;
-    width: 100%;
-    margin-top: 40px;
-}
-
-footer a {
-    color: #6c63ff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }

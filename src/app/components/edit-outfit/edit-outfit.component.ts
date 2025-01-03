@@ -13,7 +13,7 @@ export class EditOutfitComponent implements OnInit {
   outfit: any = {
     id: null,
     name: 'White Sneakers',
-    imageUrl: 'assets/images/uploadPic.jpeg',
+    image_url: 'assets/images/uploadPic.jpeg',
     tags: 'Casual, denim',
     category: 'Accessories',
   };

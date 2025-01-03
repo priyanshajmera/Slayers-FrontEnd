@@ -17,6 +17,26 @@ export class AppComponent {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Returns true if the token exists
+    var token = localStorage.getItem('token');
+    if(token && !this.isTokenExpired(token)) {
+      return true;
+    }
+    else{
+      localStorage.removeItem('token');
+      return false;
+    } 
+     // Returns true if the token exists
+  }
+
+  isTokenExpired(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
+      const expiry = payload.exp; // Extract the `exp` field
+      const now = Math.floor(Date.now() / 1000); // Current time in seconds
+      return now > expiry; // Check if the current time is past the expiry time
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return true; // Treat errors as expired tokens
+    }
   }
 }
