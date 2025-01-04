@@ -66,6 +66,14 @@ export class OOTDComponent {
         { name: 'Night', selected: false },
       ],
     },
+    {
+      id: 5,
+      title: 'Layering with other clothes?',
+      tags: [
+        { name: 'Yes', selected: false },
+        { name: 'No', selected: false },
+      ],
+    },
   ];
   outfits = [];
   toggleSelection(tag: any): void {
