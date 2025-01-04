@@ -20,7 +20,7 @@ export class OOTDComponent {
       title: 'Occasion',
       tags: [
         { name: 'Casual Outing', selected: false },
-        { name: 'Work or Formal', selected: false },
+        { name: 'Work/Formal', selected: false },
         { name: 'Party', selected: false },
         { name: 'Date', selected: false },
         { name: 'Workout', selected: false },
@@ -31,11 +31,9 @@ export class OOTDComponent {
       id: 1,
       title: 'Weather',
       tags: [
-        { name: 'Hot/Sunny', selected: false },
+        { name: 'Hot', selected: false },
         { name: 'Rainy', selected: false },
-        { name: 'Cold/Winter', selected: false },
-        { name: 'Mild/Autumn', selected: false },
-        { name: 'Spring', selected: false },
+        { name: 'Cold', selected: false },
       ],
     },
     {
@@ -43,67 +41,23 @@ export class OOTDComponent {
       title: 'Personal Style',
       tags: [
         { name: 'Classic', selected: false },
-        { name: 'Boho', selected: false },
         { name: 'Minimalistic', selected: false },
         { name: 'Trendy', selected: false },
         { name: 'Sporty', selected: false },
-        { name: 'Edgy', selected: false },
         { name: 'Elegant', selected: false },
       ],
     },
     {
       id: 3,
-      title: 'Comfort Level',
+      title: 'Body Fit',
       tags: [
-        { name: 'High Comfort', selected: false },
-        { name: 'Balanced', selected: false },
-        { name: 'Low Comfort (for special occasions)', selected: false },
+        { name: 'Loose', selected: false },
+        { name: 'Fitted', selected: false },
+        { name: 'Relaxed', selected: false },
       ],
     },
     {
       id: 4,
-      title: 'Color Preferences',
-      tags: [
-        { name: 'Preferred Colors', selected: false },
-        { name: 'Avoided Colors', selected: false },
-        { name: 'Seasonal Colors', selected: false },
-      ],
-    },
-    {
-      id: 5,
-      title: 'Body Fit',
-      tags: [
-        { name: 'Loose Fit', selected: false },
-        { name: 'Fitted', selected: false },
-        { name: 'Cropped', selected: false },
-        { name: 'High-Waisted', selected: false },
-        { name: 'A-line', selected: false },
-        { name: 'Relaxed', selected: false },
-      ],
-    },
-    {
-      id: 6,
-      title: 'Extra',
-      tags: [
-        { name: 'Modest Clothing', selected: false },
-        { name: 'Traditional Wear', selected: false },
-        { name: 'Head Covering', selected: false },
-        { name: 'Festive Attire', selected: false },
-      ],
-    },
-    {
-      id: 7,
-      title: 'Mood',
-      tags: [
-        { name: 'Confident', selected: false },
-        { name: 'Relaxed', selected: false },
-        { name: 'Bold', selected: false },
-        { name: 'Elegant', selected: false },
-        { name: 'Playful', selected: false },
-      ],
-    },
-    {
-      id: 8,
       title: 'Time of Day',
       tags: [
         { name: 'Daytime', selected: false },
