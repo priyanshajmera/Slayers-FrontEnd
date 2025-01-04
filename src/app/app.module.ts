@@ -15,7 +15,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { OutfitDetailComponent } from './components/outfit-detail/outfit-detail.component';
 import { OOTDComponent } from './components/ootd/ootd.component';
 import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
-
+import { LoaderComponent } from './components/loader/loader.component';
+import { HttpLoader } from './Interceptors/http-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,9 @@ import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggest
     LandingComponent,
     OutfitDetailComponent,
     OOTDComponent,
-    OOTDSuggestionComponent
+    OOTDSuggestionComponent,
+    LoaderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggest
       useClass: AuthInterceptor,
       multi: true, // Allow multiple interceptors if needed
     },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpLoader, multi: true }
   ],
   bootstrap: [AppComponent]
 })

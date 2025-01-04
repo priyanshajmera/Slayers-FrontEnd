@@ -1,20 +1,57 @@
-<div class="container" *ngIf="!error">
-  <div *ngFor="let category of wardrobe | keyvalue">
-    <div class="category">
-      <h2>{{ category.key }}</h2>
-      <div *ngFor="let item of category.value" class="item">
-        <img [src]="item.image_url" alt="{{ item.tags || 'No tags' }}">
-        <div class="item-details">
-          <p>{{ item.tags || 'No tags available' }}</p>
-        </div>
-        <div class="item-buttons">
-          <button class="edit-button" (click)="editOutfit(item.id)">Edit</button>
-          <button class="delete-button" (click)="deleteOutfit(item.id)">Delete</button>
+<div class="container mx-auto p-10" *ngIf="!error">
+  <div *ngFor="let category of wardrobe | keyvalue; let i = index" class="mb-8">
+    <h2 class="text-xl font-bold mb-4">{{ category.key }}</h2>
+
+    <div class="relative">
+      <!-- Scrollable Container -->
+      <div 
+        class="overflow-hidden relative">
+        <div 
+          class="flex transition-transform duration-500 ease-in-out gap-6"
+          [style.transform]="'translateX(' + currentIndex[i] * -100 + '%)'">
+          
+          <div 
+            *ngFor="let item of category.value" 
+            class="card w-1/4 bg-white rounded-lg shadow-md p-6 flex flex-col items-center flex-shrink-0">
+            
+            <img 
+              [src]="item.image_url" 
+              alt="{{ item.tags || 'No tags' }}" 
+              class="w-40 h-40 rounded-md object-cover mb-4">
+
+            <div class="text-center mb-4">
+              <p class="text-gray-700">{{ item.tags || 'No tags available' }}</p>
+            </div>
+
+            <div class="flex gap-2">
+              <button (click)="editOutfit(item.id)"
+                class="edit-button bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-500">
+                Edit
+              </button>
+              <button (click)="deleteOutfit(item.id)"
+                class="delete-button bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Navigation Buttons -->
+      <button 
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-100 rounded-full p-3 shadow hover:bg-gray-300 z-10"
+        (click)="prevSlide(i, category.value.length)">
+        &larr;
+      </button>
+      <button 
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-100 rounded-full p-3 shadow hover:bg-gray-300 z-10"
+        (click)="nextSlide(i, category.value.length)">
+        &rarr;
+      </button>
     </div>
   </div>
 </div>
 
-<div *ngIf="error" class="error">{{ error }}</div>
-
+<div *ngIf="error" class="error text-center text-red-600 text-lg">
+  {{ error }}
+</div>

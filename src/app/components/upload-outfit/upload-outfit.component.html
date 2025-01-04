@@ -1,31 +1,54 @@
-
-
-<div class="container">
-  <div class="card">
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="bg-white p-10 rounded-lg shadow-md w-96 text-center">
     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-      <img src="../../../assets/images/uploadPic.jpeg" alt="Outfit Preview" />
+      <img
+        [src]="previewUrl || '../../../assets/images/uploadPic.jpeg'"
+        alt="Outfit Preview"
+        class="w-36 h-36 rounded-full object-cover mx-auto mb-6"
+      />
 
-      <label for="image" class="button">Upload Image
-
+      <label for="image" class="block bg-indigo-600 text-white py-2 px-4 rounded cursor-pointer hover:bg-indigo-500">
+        Upload Image
         <input type="file" id="image" (change)="onFileChange($event)" required hidden />
       </label>
 
-
-      <label for="category">Select a Category:</label>
-      <div id="category" class="category">
-        <label><input type="radio" formControlName="category" value="Top" /> Top</label>
-        <label><input type="radio" formControlName="category" value="Bottom" /> Bottom</label>
-        <label><input type="radio" formControlName="category" value="Dress" /> Dress</label>
-        <label><input type="radio" formControlName="category" value="Accessories" /> Accessories</label>
+      <label for="category" class="block text-left mt-4 text-gray-700 font-medium">
+        Select a Category:
+      </label>
+      <div id="category" class="flex justify-between mt-2 mb-6">
+        <label class="flex items-center gap-2 text-gray-700">
+          <input type="radio" formControlName="category" value="Top" class="cursor-pointer" /> Top
+        </label>
+        <label class="flex items-center gap-2 text-gray-700">
+          <input type="radio" formControlName="category" value="Bottom" class="cursor-pointer" /> Bottom
+        </label>
+        <label class="flex items-center gap-2 text-gray-700">
+          <input type="radio" formControlName="category" value="Dress" class="cursor-pointer" /> Dress
+        </label>
+        <label class="flex items-center gap-2 text-gray-700">
+          <input type="radio" formControlName="category" value="Accessories" class="cursor-pointer" /> Accessories
+        </label>
       </div>
 
-      <label for="tags">Tags</label>
-      <input type="text" id="tags" formControlName="tags" placeholder="Add tags separated by commas" />
+      <label for="tags" class="block text-left text-gray-700 font-medium">Tags</label>
+      <input
+        type="text"
+        id="tags"
+        formControlName="tags"
+        placeholder="Add tags separated by commas"
+        class="w-full border border-gray-300 rounded px-4 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      />
 
-      <button type="submit" [disabled]="uploadForm.invalid" class="submit-button">Submit Outfit</button>
+      <button
+        type="submit"
+        [disabled]="uploadForm.invalid"
+        class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-500 disabled:opacity-50"
+      >
+        Submit Outfit
+      </button>
 
-      <div *ngIf="uploadSuccess" class="success">{{ uploadSuccess }}</div>
-      <div *ngIf="uploadError" class="error">{{ uploadError }}</div>
+      <div *ngIf="uploadSuccess" class="mt-4 text-green-600 text-sm">{{ uploadSuccess }}</div>
+      <div *ngIf="uploadError" class="mt-4 text-red-600 text-sm">{{ uploadError }}</div>
     </form>
   </div>
 </div>

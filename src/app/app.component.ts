@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { LoaderService } from './Services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,22 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Slayers-FrontEnd';
   
-  constructor(private router: Router) {}
+  constructor(private router: Router,private loaderService: LoaderService) {
+    this.router.events.subscribe((event) => {
+      if (
+        event instanceof NavigationStart
+      ) {
+        this.loaderService.show();
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        this.loaderService.hide();
+      }
+    });
+  }
+  
 
   logout(): void {
     localStorage.removeItem('token');

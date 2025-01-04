@@ -13,6 +13,7 @@ export class UploadOutfitComponent {
   uploadForm: FormGroup;
   uploadError: string | null = null;
   uploadSuccess: string | null = null;
+  previewUrl: string | ArrayBuffer | null = null;
 
   private apiUrl = environment.apiUrl+'/upload'; // Replace with your API endpoint
 
@@ -28,8 +29,16 @@ export class UploadOutfitComponent {
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input && input.files && input.files.length > 0) {
-      this.uploadForm.patchValue({ image: input.files[0] });
+    if (input?.files?.length) {
+      const file = input.files[0];
+      this.uploadForm.patchValue({ image: file });
+      this.uploadForm.get('image')?.updateValueAndValidity();
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 

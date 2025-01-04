@@ -1,37 +1,63 @@
-<div class="signup-container">
-  
-  <div class="form-container">
-  
-    <h2>Create Your Account</h2>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <label for="username">Name</label>
-      <input type="text" id="username" formControlName="username" placeholder="Enter your username" required />
-      <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].invalid">
-        <small class="error-text">Username must be at least 3 characters long.</small>
-      </div>
-  
-      <label for="email">Email</label>
-      <input type="email" id="email" formControlName="email" placeholder="Enter your email" required />
-      
-      <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].invalid">
-        <small class="error-text">Please enter a valid email address.</small>
-      </div>
-  
-      <label for="password">Password</label>
-      <input type="password" placeholder="Enter your password" formControlName="password" required 
+<div class="bg-white rounded-2xl shadow-lg p-10 mx-auto w-96 text-center mt-20 mb-20">
+  <h2 class="text-lg font-bold mb-5">Create Your Account</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Username -->
+    <label for="username" class="block text-left text-sm text-gray-600 mb-1">Name</label>
+    <input
+      type="text"
+      id="username"
+      formControlName="username"
+      placeholder="Enter your username"
+      required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+    <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].invalid">
+      <small class="text-red-500 text-sm">Username must be at least 3 characters long.</small>
+    </div>
+
+    <!-- Email -->
+    <label for="email" class="block text-left text-sm text-gray-600 mb-1">Email</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Enter your email"
+      required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+    <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].invalid">
+      <small class="text-red-500 text-sm">Please enter a valid email address.</small>
+    </div>
+
+    <!-- Password -->
+    <label for="password" class="block text-left text-sm text-gray-600 mb-1">Password</label>
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
       placeholder="Enter your password"
-      />
-      <div *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
-        <small class="error-text">
-          Password must be at least 6 characters long.
-        </small>
-      </div>
-  
-      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
-      <div *ngIf="signupError" class="error-text">{{ signupError }}</div>
-    </form>
-  </div>
+      required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+    <div *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
+      <small class="text-red-500 text-sm">Password must be at least 6 characters long.</small>
+    </div>
+
+    <!-- Sign Up Button -->
+    <button
+      type="submit"
+      [disabled]="signupForm.invalid"
+      class="bg-black text-white py-3 rounded-full w-full hover:bg-gray-800 disabled:opacity-50"
+    >
+      Sign Up
+    </button>
+
+    <!-- Signup Error -->
+    <div *ngIf="signupError" class="text-red-500 text-sm mt-3">{{ signupError }}</div>
+    <p class="text-sm text-gray-600 mt-5">
+      Already have an account? 
+      <a routerLink="/login" class="text-indigo-500 hover:underline">Go To Login</a>
+    </p>
+
+  </form>
 </div>
-
-
-
