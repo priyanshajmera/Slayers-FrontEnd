@@ -9,8 +9,9 @@
                 <!-- Active Link = text-indigo-500
                 Inactive Link = hover:text-indigo-500 -->
                 <li class="md:px-4 md:py-2 text-indigo-500"><a href="/home">Home</a></li>
-                <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="/wardrobe">Organize outfit</a></li>
-                <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="/upload-outfit">Upload Outfit</a></li>
+                <li  *ngIf="isLoggedIn()" class="md:px-4 md:py-2 hover:text-indigo-400"><a href="/wardrobe">Organize outfit</a></li>
+                <li *ngIf="isLoggedIn()" class="md:px-4 md:py-2 hover:text-indigo-400"><a href="/upload-outfit">Upload Outfit</a></li>
+                <li *ngIf="isLoggedIn()" class="md:px-4 md:py-2 hover:text-indigo-400"><a href="/ootd">Generate Outfit</a></li>
 
 
             </ul>

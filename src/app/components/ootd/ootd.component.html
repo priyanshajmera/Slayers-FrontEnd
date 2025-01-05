@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container ">
     <h1>Outfit Parameters</h1>
-    <p>Customize your outfit by selecting the parameters below.</p>
+    <p class="text-center mb-5">Customize your outfit by selecting the parameters below.</p>
     <div class="category" *ngFor="let category of categories">
         <h2>{{ category.title }}</h2>
         <div class="tags">
@@ -10,5 +10,14 @@
             </div>
         </div>
     </div>
+    
 </div>
-<button (click)="sendSelectedTagsToBackend()" class="submit-btn">Submit Selected Tags</button>
+<div class=" flex flex-col items-center">
+    <div class="mt-6">
+        <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-gray-50 rounded-xl disabled:opacity-20"
+        [disabled]="!getSelectedTags().length"
+            (click)="sendSelectedTagsToBackend()">
+            Generate
+        </button>
+    </div>
+</div>

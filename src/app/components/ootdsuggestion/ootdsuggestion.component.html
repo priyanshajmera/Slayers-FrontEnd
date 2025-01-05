@@ -1,18 +1,45 @@
-<div class="container" *ngIf="cards.length > 0">
-  <div class="card" *ngFor="let card of cards; let i = index" [class.active]="currentCardIndex === i">
-    <h2>{{ card.title }}</h2>
-    <div class="images">
-      <div *ngFor="let item of card.items">
-        <h3>{{ item.key }}</h3>
-        <img [src]="item.clothId" alt="{{ item.key }}">
+<div class="flex flex-col items-center mt-16 min-h-[calc(100vh-150px)]">
+  <div 
+    class="relative w-[34rem] bg-white rounded-lg shadow-lg p-6 text-center"
+    *ngFor="let card of cards; let i = index" 
+    [class.hidden]="currentCardIndex !== i">
+    
+    <h2 class="text-2xl font-bold text-gray-800">{{ card.title }}</h2>
+
+    <!-- Items Aligned Horizontally -->
+    <div class="flex overflow-x-auto mt-4 space-x-4">
+      <div *ngFor="let item of card.items" class="flex-shrink-0">
+        <h3 class="text-lg font-medium text-gray-700">{{ item.key }}</h3>
+        <img 
+          [src]="item.clothId" 
+          [alt]="item.key" 
+          class="w-[15rem] h-[20rem] rounded-md shadow-sm" />
       </div>
     </div>
   </div>
-</div>
-<div class="nav-buttons">
-  <button (click)="prevCard()" [disabled]="currentCardIndex === 0">Previous</button>
-  <button (click)="nextCard()" [disabled]="currentCardIndex === cards.length - 1">Next</button>
-</div>
-<div class="regenerate-button">
-  <button (click)="regenerateCards()">Regenerate</button>
+
+  <!-- Navigation Buttons -->
+  <div class="flex justify-between w-80 mt-6">
+    <button 
+      class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
+      (click)="prevCard()" 
+      [disabled]="currentCardIndex === 0">
+      Previous
+    </button>
+    <button 
+      class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
+      (click)="nextCard()" 
+      [disabled]="currentCardIndex === cards.length - 1">
+      Next
+    </button>
+  </div>
+
+  <!-- Regenerate Button -->
+  <div class="mt-6">
+    <button 
+      class="py-2 px-6 bg-green-600 text-white rounded-lg hover:bg-green-500"
+      (click)="regenerateCards()">
+      Regenerate
+    </button>
+  </div>
 </div>
