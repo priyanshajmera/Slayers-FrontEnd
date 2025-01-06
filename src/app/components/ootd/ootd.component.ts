@@ -75,7 +75,10 @@ export class OOTDComponent {
       ],
     },
   ];
-  outfits = [];
+
+  outfits: Outfits = {}; // Initialize the outfits object
+  formattedCards: { title: string; items: OutfitItem[] }[] = [];
+  
   toggleSelection(tag: any): void {
     tag.selected = !tag.selected;
   }
@@ -102,7 +105,9 @@ export class OOTDComponent {
     this.ootdService.ootdSuggestion(selectedTags).subscribe({
       next: (response: any) => {
         this.outfits = response;
-        const formattedCards = Object.keys(this.outfits).map((key: any) => ({
+        const formattedCards = Object.keys(this.outfits)
+        .filter((key: any) => this.outfits[key].length > 1)
+        .map((key: any) => ({
           title: key,
           items: this.outfits[key],
         }));
@@ -114,4 +119,14 @@ export class OOTDComponent {
       },
     });
   }
+}
+
+
+export interface OutfitItem {
+  key: string;
+  clothId: string;
+}
+
+export interface Outfits {
+  [key: string]: OutfitItem[];
 }
