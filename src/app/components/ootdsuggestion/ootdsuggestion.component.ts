@@ -3,21 +3,23 @@ import { CardDataService } from '../../Services/card-data.service';
 import { Router } from '@angular/router';
 import { OotdService } from '../../Services/ootd.service';
 
-
 @Component({
   selector: 'app-ootdsuggestion',
   templateUrl: './ootdsuggestion.component.html',
-  styleUrl: './ootdsuggestion.component.css'
+  styleUrl: './ootdsuggestion.component.css',
 })
 export class OOTDSuggestionComponent {
-  constructor(private cardDataService:CardDataService,private router:Router,private ootsService:OotdService) {}
+  constructor(
+    private cardDataService: CardDataService,
+    private router: Router,
+    private ootsService: OotdService
+  ) {}
   currentCardIndex = 0;
-  cards:any;
-  
+  cards: any;
+
   ngOnInit(): void {
-    
     this.cards = this.cardDataService.getCardData();
-    console.log('cards',this.cards);
+    console.log('cards', this.cards);
   }
 
   nextCard(): void {
@@ -33,20 +35,18 @@ export class OOTDSuggestionComponent {
   }
 
   regenerateCards(): void {
-    this.currentCardIndex = 0;
+    this.router.navigate(['/ootd']);
   }
 
-  navigateToVirtualTryOn(top:string,bottom:string): void {
+  navigateToVirtualTryOn(top: string, bottom: string): void {
     // Navigate to Virtual Try On page
-    console.log( top,bottom); 
-    this.ootsService.getTryOnData(top,bottom).subscribe({
-      next:(response:any)=>{
+    console.log(top, bottom);
+    this.ootsService.getTryOnData(top, bottom).subscribe({
+      next: (response: any) => {
         this.router.navigate(['/virtualtryon'], {
-          state:  {response:response} },
-        );
-      }
+          state: { response: response },
+        });
+      },
     });
-    
   }
-
 }

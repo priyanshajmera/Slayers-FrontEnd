@@ -71,7 +71,7 @@ export class OOTDComponent {
       title: 'Layering with other clothes?',
       tags: [
         { name: 'Yes', selected: false },
-        { name: 'No', selected: false },
+        { name: 'No', selected: true },
       ],
     },
   ];
