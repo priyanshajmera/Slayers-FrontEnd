@@ -11,6 +11,7 @@ import { authGuard } from './Guards/auth.guard';
 import { LandingComponent } from './components/landing/landing.component';
 import { OOTDComponent } from './components/ootd/ootd.component';
 import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
+import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-on.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'ootd-suggestions',
     component: OOTDSuggestionComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'virtualtryon',
+    component: VirtualTryOnComponent,
     canActivate: [authGuard],
   },
 ];

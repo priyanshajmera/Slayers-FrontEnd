@@ -17,6 +17,7 @@ import { OOTDComponent } from './components/ootd/ootd.component';
 import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpLoader } from './Interceptors/http-loader';
+import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-on.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { HttpLoader } from './Interceptors/http-loader';
     OutfitDetailComponent,
     OOTDComponent,
     OOTDSuggestionComponent,
-    LoaderComponent
+    LoaderComponent,
+    VirtualTryOnComponent
     
   ],
   imports: [

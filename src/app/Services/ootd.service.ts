@@ -30,4 +30,8 @@ export class OotdService {
   clearData(): void {
     localStorage.removeItem(this.storageKey);
   }
+
+  getTryOnData(top:string,bottom:string): any {
+    return this.http.post(`${this.apiUrl}/virtualtryon`,{top,bottom});
+  }
 }

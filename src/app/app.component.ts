@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { LoaderService } from './Services/loader.service';
 
 @Component({
@@ -9,12 +15,10 @@ import { LoaderService } from './Services/loader.service';
 })
 export class AppComponent {
   title = 'Slayers-FrontEnd';
-  
-  constructor(private router: Router,private loaderService: LoaderService) {
+
+  constructor(private router: Router, private loaderService: LoaderService) {
     this.router.events.subscribe((event) => {
-      if (
-        event instanceof NavigationStart
-      ) {
+      if (event instanceof NavigationStart) {
         this.loaderService.show();
       } else if (
         event instanceof NavigationEnd ||
@@ -25,7 +29,6 @@ export class AppComponent {
       }
     });
   }
-  
 
   logout(): void {
     localStorage.removeItem('token');
@@ -34,14 +37,13 @@ export class AppComponent {
 
   isLoggedIn(): boolean {
     var token = localStorage.getItem('token');
-    if(token && !this.isTokenExpired(token)) {
+    if (token && !this.isTokenExpired(token)) {
       return true;
-    }
-    else{
+    } else {
       localStorage.removeItem('token');
       return false;
-    } 
-     // Returns true if the token exists
+    }
+    // Returns true if the token exists
   }
 
   isTokenExpired(token: string): boolean {
@@ -54,5 +56,9 @@ export class AppComponent {
       console.error('Error decoding token:', error);
       return true; // Treat errors as expired tokens
     }
+  }
+
+  redirectTologin() {
+    this.router.navigate(['/login']);
   }
 }
