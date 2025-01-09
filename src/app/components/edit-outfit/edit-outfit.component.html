@@ -1,11 +1,8 @@
 <div class="container">
-  <header>
+  
+
     
-    <div class="header-buttons">
-      <button class="btn save" (click)="saveChanges()">Save Changes</button>
-      <button class="btn cancel" (click)="cancel()">Cancel</button>
-    </div>
-  </header>
+  
 
   <main class="main-content">
     <div class="left-panel">
@@ -16,53 +13,41 @@
     </div>
     <div class="right-panel">
       <div class="tags-section">
-        <h2>Tags</h2>
+        <h2>Name</h2>
         <input type="text" [(ngModel)]="outfit.tags" class="tags-input" />
-        
+
+      </div>
+      <div class="description-section">
+        <h2>Description</h2>
+        <textarea [(ngModel)]="outfit.description" class="description-input"></textarea>
       </div>
       <div class="category-section">
         <h2>Category</h2>
         <div class="radio-group">
           <label>
-            <input
-              type="radio"
-              name="category"
-              value="Top"
-              [(ngModel)]="outfit.category"
-            />
+            <input type="radio" name="category" value="Top" [(ngModel)]="outfit.category" />
             Top
           </label>
           <label>
-            <input
-              type="radio"
-              name="category"
-              value="Bottom"
-              [(ngModel)]="outfit.category"
-            />
+            <input type="radio" name="category" value="Bottom" [(ngModel)]="outfit.category" />
             Bottom
           </label>
           <label>
-            <input
-              type="radio"
-              name="category"
-              value="Dress"
-              [(ngModel)]="outfit.category"
-            />
+            <input type="radio" name="category" value="Dress" [(ngModel)]="outfit.category" />
             Dress
           </label>
           <label>
-            <input
-              type="radio"
-              name="category"
-              value="Accessories"
-              [(ngModel)]="outfit.category"
-            />
+            <input type="radio" name="category" value="Accessories" [(ngModel)]="outfit.category" />
             Accessories
           </label>
         </div>
       </div>
-      <div class="delete-section">
+      <div class="delete-section flex flex-row justify-between">
         <button class="btn delete" (click)="deleteOutfit()">Delete Outfit</button>
+        <div class="float-right ">
+          <button class="edit-button mx-5 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-500" (click)="saveChanges()">Save Changes</button>
+          <button class="cancel-button bg-gray-600 text-white px-4 py-2 rounded-xl hover:bg-gray-500" (click)="cancel()">Cancel</button>
+        </div>
       </div>
     </div>
   </main>

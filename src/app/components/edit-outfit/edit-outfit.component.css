@@ -82,8 +82,8 @@ header {
 }
 
 .tags-section,
-
-.category-section {
+.category-section,
+.description-section {
   background: #ffffff;
   padding: 20px;
   border-radius: 20px;
@@ -91,7 +91,8 @@ header {
 }
 
 .tags-section h2,
-.category-section h2 {
+.category-section h2,
+.description-section h2 {
   margin: 0 0 10px;
 }
 
@@ -102,6 +103,13 @@ header {
   border-radius: 10px;
 }
 
+.description-input {
+  width: calc(100%);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 100px;
+}
 .btn.edit {
   background: #6c63ff;
   color: white;
@@ -130,7 +138,7 @@ header {
 }
 
 .btn.delete {
-  background: #F66;
+  background: #f66;
   color: white;
   border: none;
   border-radius: 20px;
@@ -140,5 +148,5 @@ header {
 }
 
 .btn.delete:hover {
-  background: #D55;
+  background: #d55;
 }

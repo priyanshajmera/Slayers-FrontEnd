@@ -16,6 +16,7 @@ export class EditOutfitComponent implements OnInit {
     image_url: 'assets/images/uploadPic.jpeg',
     tags: 'Casual, denim',
     category: 'Accessories',
+    description:'Description Unavailable'
   };
 
   private apiUrl = environment.apiUrl+'/outfits';
