@@ -37,6 +37,7 @@ export class LoginComponent {
         next: (response: any) => {
           // Save the token to localStorage and navigate to home
           localStorage.setItem('token', response.token);
+          localStorage.setItem('userInfo',JSON.stringify(response.userDataToSend));
           this.router.navigate(['/home']);
         },
         error: (error: any) => {

@@ -24,6 +24,9 @@ export class SignupComponent {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
+      phone: [''],
+      gender:['', Validators.required],
+      dob:['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
@@ -46,6 +49,14 @@ export class SignupComponent {
             this.signupError = error.error?.message || 'Signup failed. Please try again.';
           },
         });
+    }
+  }
+
+  validateNumericInput(event: KeyboardEvent) {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode < 48 || charCode > 57) {
+      // If not a number, prevent the input
+      event.preventDefault();
     }
   }
 

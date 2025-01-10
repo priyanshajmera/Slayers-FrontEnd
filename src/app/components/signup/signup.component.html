@@ -3,59 +3,79 @@
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- Username -->
     <label for="username" class="block text-left text-sm text-gray-600 mb-1">Name</label>
-    <input
-      type="text"
-      id="username"
-      formControlName="username"
-      placeholder="Enter your username"
-      required
-      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
+    <input type="text" id="username" formControlName="username" placeholder="Enter your full name" required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
     <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].invalid">
       <small class="text-red-500 text-sm">Username must be at least 3 characters long.</small>
     </div>
 
     <!-- Email -->
     <label for="email" class="block text-left text-sm text-gray-600 mb-1">Email</label>
-    <input
-      type="email"
-      id="email"
-      formControlName="email"
-      placeholder="Enter your email"
-      required
-      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
+    <input type="email" id="email" formControlName="email" placeholder="Enter your email" required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
     <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].invalid">
       <small class="text-red-500 text-sm">Please enter a valid email address.</small>
     </div>
 
+    <label for="phone" class="block text-left text-sm text-gray-600 mb-1">Phone</label>
+    <input type="phone" id="phone" formControlName="phone" placeholder="Enter your phone number" maxlength="10" (keypress)="validateNumericInput($event)" required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+
+    <div class="mb-4">
+      <label for="dob" class="block text-left text-sm text-gray-600 mb-1">Date of Birth</label>
+      <input type="date" id="dob" formControlName="dob"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" />
+    </div>
+
+    <div *ngIf="signupForm.controls['dob'].touched && signupForm.controls['dob'].invalid">
+      <small class="text-red-500 text-sm">Please enter DOB.</small>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-left text-sm text-gray-600 mb-1">Gender</label>
+      <div class="flex flex-row items-center">
+        <!-- Radio Button for Male -->
+        <div class="flex items-center mr-5">
+          <input type="radio" id="male" value="male" formControlName="gender" class="mr-2" />
+          <label for="male" class="text-gray-700">Male</label>
+        </div>
+
+        <!-- Radio Button for Female -->
+        <div class="flex items-center mr-5">
+          <input type="radio" id="female" value="female" formControlName="gender" class="mr-2" />
+          <label for="female" class="text-gray-700">Female</label>
+        </div>
+
+        <!-- Radio Button for Other -->
+        <div class="flex items-center">
+          <input type="radio" id="other" value="other" formControlName="gender" class="mr-2" />
+          <label for="other" class="text-gray-700">Other</label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="signupForm.controls['gender'].touched && signupForm.controls['gender'].invalid">
+      <small class="text-red-500 text-sm">Please select your gender.</small>
+    </div>
+
     <!-- Password -->
     <label for="password" class="block text-left text-sm text-gray-600 mb-1">Password</label>
-    <input
-      type="password"
-      id="password"
-      formControlName="password"
-      placeholder="Enter your password"
-      required
-      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
+    <input type="password" id="password" formControlName="password" placeholder="Enter your password" required
+      class="w-full p-3 border border-gray-300 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
     <div *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
       <small class="text-red-500 text-sm">Password must be at least 6 characters long.</small>
     </div>
 
     <!-- Sign Up Button -->
-    <button
-      type="submit"
-      [disabled]="signupForm.invalid"
-      class="bg-black text-white py-3 rounded-full w-full hover:bg-gray-800 disabled:opacity-50"
-    >
+    <button type="submit" [disabled]="signupForm.invalid"
+      class="bg-black text-white py-3 rounded-full w-full hover:bg-gray-800 disabled:opacity-50">
       Sign Up
     </button>
 
     <!-- Signup Error -->
     <div *ngIf="signupError" class="text-red-500 text-sm mt-3">{{ signupError }}</div>
     <p class="text-sm text-gray-600 mt-5">
-      Already have an account? 
+      Already have an account?
       <a routerLink="/login" class="text-indigo-500 hover:underline">Go To Login</a>
     </p>
 

@@ -18,6 +18,7 @@ import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggest
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpLoader } from './Interceptors/http-loader';
 import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-on.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-o
     OOTDComponent,
     OOTDSuggestionComponent,
     LoaderComponent,
-    VirtualTryOnComponent
+    VirtualTryOnComponent,
+    ProfileComponent
     
   ],
   imports: [

@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/landing']);
   }
 
