@@ -83,7 +83,8 @@ header {
 
 .tags-section,
 .category-section,
-.description-section {
+.description-section,
+.sub-category-section{
   background: #ffffff;
   padding: 20px;
   border-radius: 20px;

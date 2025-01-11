@@ -1,22 +1,35 @@
 <div class="flex flex-wrap gap-6 justify-center p-5">
-    <div class="flex-1 max-w-md">
-        <h2 class="text-xl font-bold mb-3">Top</h2>
-        <div class="rounded-lg shadow-lg overflow-hidden">
-            <img [src]="tryOnData.top" alt="Top section image" class="w-full h-auto">
-        </div>
+    <!-- Top Section -->
+    <div class="w-full sm:w-1/2 lg:w-1/3 max-w-md">
+      <h2 class="text-xl font-bold mb-3 text-center lg:text-left">Top</h2>
+      <div class="rounded-lg shadow-lg overflow-hidden">
+        <img 
+          [src]="tryOnData.top" 
+          alt="Top section image" 
+          class="w-full h-auto object-cover">
+      </div>
     </div>
-
-    <div class="flex-1 max-w-md">
-        <h2 class="text-xl font-bold mb-3">Bottom</h2>
-        <div class="rounded-lg shadow-lg overflow-hidden">
-            <img [src]="tryOnData.bottom" alt="Bottom section image" class="w-full h-auto">
-        </div>
+  
+    <!-- Bottom Section -->
+    <div class="w-full sm:w-1/2 lg:w-1/3 max-w-md">
+      <h2 class="text-xl font-bold mb-3 text-center lg:text-left">Bottom</h2>
+      <div class="rounded-lg shadow-lg overflow-hidden">
+        <img 
+          [src]="tryOnData.bottom" 
+          alt="Bottom section image" 
+          class="w-full h-auto object-cover">
+      </div>
     </div>
-
-    <div class="flex-1 max-w-md">
-        <h2 class="text-xl font-bold mb-3">Virtual Outfit</h2>
-        <div class="rounded-lg shadow-lg overflow-hidden">
-            <img [src]="tryOnData.output" alt="Wardrobe image" class="w-full h-auto">
-        </div>
+  
+    <!-- Virtual Outfit Section -->
+    <div class="w-full sm:w-1/2 lg:w-1/3 max-w-md">
+      <h2 class="text-xl font-bold mb-3 text-center lg:text-left">Virtual Outfit</h2>
+      <div class="rounded-lg shadow-lg overflow-hidden">
+        <img 
+          [src]="tryOnData.output" 
+          alt="Virtual Outfit image" 
+          class="w-full h-auto object-cover">
+      </div>
     </div>
-</div>
+  </div>
+  

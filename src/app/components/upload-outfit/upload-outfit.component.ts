@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
+import { WardrobeService } from '../../Services/wardrobe.service';
+import { LoaderService } from '../../Services/loader.service';
 
 @Component({
   selector: 'app-upload-outfit',
@@ -19,28 +21,11 @@ export class UploadOutfitComponent {
   private apiUrl = environment.apiUrl+'/upload'; 
   
   gender=JSON.parse(localStorage.getItem('userInfo')!).gender;
-  categorySubcategories: { [key: string]: string[] } = {
-    Top: ['T-shirt', 'Shirt', 'Jacket'],
-    Bottom: ['Jeans', 'Trousers', 'Shorts'],
-    Dress: ['Gown', 'Party Dress', 'Casual Dress'],
-    Accessories: ['Belt', 'Hat', 'Scarf'],
-  };
+  categorySubcategories: { [key: string]: string[] } = {};
+  categorySubcategoriesfemale:{ [key: string]: string[] } ={};
+  categorySubcategoriesOther:{ [key: string]: string[] } ={};
 
-  categorySubcategoriesfemale:{ [key: string]: string[] } ={
-    Top: ['bra', 'bra1', 'bra2'],
-    Bottom: ['Jeans', 'Trousers', 'Shorts'],
-    Dress: ['Gown', 'Party Dress', 'Casual Dress'],
-    Accessories: ['Belt', 'Hat', 'Scarf'],
-  }
-
-  categorySubcategoriesOther:{ [key: string]: string[] } ={
-    Top: ['T-shirt', 'Shirt', 'Jacket'],
-    Bottom: ['Jeans', 'Trousers', 'Shorts'],
-    Dress: ['Gown', 'Party Dress', 'Casual Dress'],
-    Accessories: ['Belt', 'Hat', 'Scarf'],
-  }
-
-  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router,private wardrobeService:WardrobeService,private loaderService:LoaderService) {
     this.uploadForm = this.fb.group({
       image: [null, Validators.required],
       category: ['', Validators.required],
@@ -49,7 +34,12 @@ export class UploadOutfitComponent {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    var subcategoryData=this.wardrobeService.getSubcategories();
+    this.categorySubcategories=subcategoryData[0];
+    this.categorySubcategoriesfemale=subcategoryData[1];
+    this.categorySubcategoriesOther=subcategoryData[2];
+  }
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -81,6 +71,7 @@ export class UploadOutfitComponent {
 
   onSubmit(): void {
     if (this.uploadForm.valid) {
+      this.loaderService.show('Uploading...');
       const formData = new FormData();
 
       formData.append('image', this.uploadForm.get('image')!.value);
@@ -98,6 +89,9 @@ export class UploadOutfitComponent {
           this.uploadError =
             err.error?.message || 'Upload failed. Please try again.';
         },
+        complete:()=>{
+          this.loaderService.hide();
+        }
       });
     }
   }

@@ -15,17 +15,20 @@ export class ProfileComponent {
   showConfirmPassword = false;
   errorMessage: string | null = null;
   isError:boolean=false;
+  previewUrl: string | ArrayBuffer | null = null;
+  
 
   constructor(private fb: FormBuilder,private profileService:ProfileService) {
     this.profileForm = this.fb.group({
       username: [''],
       email: [{ value: 'test@test.com', disabled: true }],
-      mobile: [''],
+      phone: [''],
       gender:['', Validators.required],
       dob:['', Validators.required],
       currentPassword: [''],
       newPassword: ['', [Validators.minLength(8)]],
       confirmPassword: [''],
+      profileimageurl:[null]
     });
   }
   ngOnInit(): void {
@@ -41,6 +44,8 @@ export class ProfileComponent {
     })
   }
 
+  
+
   togglePasswordSection() {
     this.showPasswordSection = !this.showPasswordSection;
   }
@@ -50,6 +55,43 @@ export class ProfileComponent {
     if (field === 'new') this.showNewPassword = !this.showNewPassword;
     if (field === 'confirm') this.showConfirmPassword = !this.showConfirmPassword;
   }
+
+  triggerFileInput(): void {
+    const fileInput = document.getElementById('image') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+  
+    if (input?.files?.length) {
+      const file = input.files[0];
+  
+      // Restrict to JPEG and PNG
+      const allowedTypes = ['image/jpeg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        this.errorMessage = 'Only JPEG and PNG files are allowed!';
+        this.profileForm.patchValue({ profileimageurl: null }); // Reset the form field
+        this.previewUrl = null; // Reset the preview URL
+        return;
+      }
+  
+      // Update form control
+      this.profileForm.patchValue({ profileimageurl: file });
+      this.profileForm.get('profileimageurl')?.updateValueAndValidity();
+  
+      // Generate preview URL
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+  
+      // Clear any previous error message
+      this.errorMessage = '';
+    }
+  }
+  
 
   onSubmit() {
     if (this.profileForm.valid) {
@@ -61,9 +103,20 @@ export class ProfileComponent {
         
         return;
       }
-      this.profileService.updateProfile(this.profileForm.value).subscribe({
+      const formData = new FormData();
+      formData.append('profileimageurl', this.profileForm.get('profileimageurl')!.value);
+      formData.append('username', this.profileForm.get('username')!.value);
+      formData.append('email', this.profileForm.get('email')!.value);
+      formData.append('gender', this.profileForm.get('gender')!.value);
+      formData.append('dob', this.profileForm.get('dob')!.value);
+      formData.append('currentPassword', this.profileForm.get('currentPassword')!.value);
+      formData.append('newPassword', this.profileForm.get('newPassword')!.value);
+      formData.append('confirmPassword', this.profileForm.get('confirmPassword')!.value);
+
+      this.profileService.updateProfile(formData).subscribe({
         next: (response) => {
           this.profileForm.patchValue(response);
+          this.errorMessage='';
         },
         error: (err) => {
           this.isError=true;

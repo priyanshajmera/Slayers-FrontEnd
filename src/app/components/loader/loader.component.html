@@ -1,4 +1,6 @@
-<div class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50" *ngIf="isLoading">
-    <div class="loader"></div>
+<div *ngIf="isLoading$ | async" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+  <div class="text-center">
+    <div class="loader mb-4"></div>
+    <p class="text-white text-lg font-semibold">{{ message$ | async }}</p>
   </div>
-  
+</div>

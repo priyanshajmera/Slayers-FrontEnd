@@ -9,11 +9,8 @@ import { LoaderService } from '../../Services/loader.service';
 })
 export class LoaderComponent {
 
-  isLoading = false;
+  isLoading$ = this.loaderService.isLoading$;
+  message$ = this.loaderService.message$;
 
-  constructor(private loaderService: LoaderService) {
-    this.loaderService.isLoading$.subscribe((loading) => {
-      this.isLoading = loading;
-    });
-  }
+  constructor(private loaderService: LoaderService) {}
 }

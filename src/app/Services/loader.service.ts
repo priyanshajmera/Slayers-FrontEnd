@@ -8,15 +8,22 @@ export class LoaderService {
 
   constructor() { }
 
-  private _isLoading = new BehaviorSubject<boolean>(false);
+  private loading = new BehaviorSubject<boolean>(false);
+  private message = new BehaviorSubject<string>('Loading...');
 
-  isLoading$ = this._isLoading.asObservable();
+  isLoading$ = this.loading.asObservable();
+  message$ = this.message.asObservable();
 
-  show(): void {
-    this._isLoading.next(true);
+  show(message?: string): void {
+    if (message) {
+      this.message.next(message);
+    } else {
+      this.message.next('Loading...'); // Default message
+    }
+    this.loading.next(true);
   }
 
   hide(): void {
-    this._isLoading.next(false);
+    this.loading.next(false);
   }
 }

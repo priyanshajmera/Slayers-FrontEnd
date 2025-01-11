@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -15,6 +15,13 @@ import { LoaderService } from './Services/loader.service';
 })
 export class AppComponent {
   title = 'Slayers-FrontEnd';
+  
+
+  isMobileMenuOpen: boolean = false; // Tracks mobile menu visibility
+  isDropdownOpen: boolean = false;
+
+  @ViewChild('dropdownButton', { static: false }) dropdownButton!: ElementRef; // Reference to dropdown button
+  @ViewChild('dropdownMenu', { static: false }) dropdownMenu!: ElementRef;
 
   constructor(private router: Router, private loaderService: LoaderService) {
     this.router.events.subscribe((event) => {
@@ -28,6 +35,16 @@ export class AppComponent {
         this.loaderService.hide();
       }
     });
+  }
+
+  // Toggles the mobile menu
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  // Toggles the profile dropdown menu
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   logout(): void {
@@ -60,5 +77,18 @@ export class AppComponent {
 
   redirectTologin() {
     this.router.navigate(['/login']);
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event): void {
+    const targetElement = event.target as HTMLElement;
+
+    if (
+      this.isDropdownOpen &&
+      !this.dropdownButton?.nativeElement.contains(targetElement) &&
+      !this.dropdownMenu?.nativeElement.contains(targetElement)
+    ) {
+      this.isDropdownOpen = false;
+    }
   }
 }
