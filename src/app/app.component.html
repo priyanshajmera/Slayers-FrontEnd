@@ -1,5 +1,5 @@
 <nav class="bg-gray-100 shadow shadow-gray-300 w-full px-4 md:px-8">
-    <div class="container mx-auto flex items-center justify-between h-16 md:h-20">
+    <div class="container mx-auto flex items-center justify-between h-16">
         <!-- Hamburger Menu (Mobile on the left) -->
         <button class="block md:hidden text-gray-600 focus:outline-none" (click)="toggleMobileMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -49,7 +49,7 @@
             <!-- Login Button (Right) -->
             <ng-template #login>
                 <button (click)="redirectTologin()"
-                    class="hidden md:block px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">
+                    class="md:block px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">
                     Login
                 </button>
             </ng-template>
