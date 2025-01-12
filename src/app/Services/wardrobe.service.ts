@@ -21,7 +21,7 @@ export class WardrobeService {
        'Sweater', 
        'Sweatshirt'],
 
-    Bottom: ['Jeans','', 'Trousers', 
+    Bottom: ['Jeans','Trousers', 
       'Shorts', 'Formal Pants', 
       'Track Pants', 'Joggers'],
 
