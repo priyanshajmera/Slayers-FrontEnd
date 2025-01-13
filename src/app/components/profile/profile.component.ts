@@ -78,7 +78,16 @@ export class ProfileComponent {
       const file = input.files[0];
 
       // Restrict to JPEG and PNG
-      const allowedTypes = ['image/jpeg', 'image/png'];
+      const allowedTypes =  [
+        'image/jpeg', // JPG, JPEG
+        'image/png',  // PNG
+        'image/avif',  // GIF
+        'image/bmp',  // BMP
+        'image/webp', // WEBP
+        'image/tiff', // TIFF
+        'image/heic', // HEIC (iPhone format)
+        'image/heif', // HEIF (iPhone format)
+    ];
       if (!allowedTypes.includes(file.type)) {
         this.errorMessage = 'Only JPEG and PNG files are allowed!';
         this.profileForm.patchValue({ profileimageurl: null }); // Reset the form field
