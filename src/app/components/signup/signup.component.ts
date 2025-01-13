@@ -39,7 +39,7 @@ export class SignupComponent {
 
       // Perform API call to register the user
       this.http
-        .post(this.apiUrl, { username, email, password })
+        .post(this.apiUrl,this.signupForm.value)
         .subscribe({
           next: () => {
             alert('Signup successful!');

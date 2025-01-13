@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +21,8 @@ import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggest
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpLoader } from './Interceptors/http-loader';
 import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-on.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     OOTDSuggestionComponent,
     LoaderComponent,
     VirtualTryOnComponent,
-    ProfileComponent
-    
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,6 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
   ],
   providers: [
     provideClientHydration(),
@@ -52,8 +54,8 @@ import { ProfileComponent } from './profile/profile.component';
       useClass: AuthInterceptor,
       multi: true, // Allow multiple interceptors if needed
     },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpLoader, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpLoader, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

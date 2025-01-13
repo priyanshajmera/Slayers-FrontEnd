@@ -12,7 +12,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { OOTDComponent } from './components/ootd/ootd.component';
 import { OOTDSuggestionComponent } from './components/ootdsuggestion/ootdsuggestion.component';
 import { VirtualTryOnComponent } from './components/virtual-try-on/virtual-try-on.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -47,10 +47,10 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path:'profile',
-    component:ProfileComponent,
-    canActivate:[authGuard]
-  }
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [authGuard],
+  },
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ export class UploadOutfitComponent {
   uploadSuccess: string | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   subcategories: string[] = [];
+  categories = ['Top', 'Bottom', 'Dress', 'Footwear', 'Accessories'];
 
   private apiUrl = environment.apiUrl+'/upload'; 
   

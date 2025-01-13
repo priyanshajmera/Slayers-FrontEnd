@@ -18,10 +18,10 @@
 
         <div class=" flex flex-row">
             <div class="hidden md:flex pr-10 items-center space-x-4 text-gray-600 font-semibold" *ngIf="isLoggedIn()">
-                <a href="/home" class="text-indigo-500">Home</a>
-                <a href="/wardrobe" class="hover:text-indigo-400">Organize Outfit</a>
-                <a href="/upload-outfit" class="hover:text-indigo-400">Upload Outfit</a>
-                <a href="/ootd" class="hover:text-indigo-400">Generate Outfit</a>
+                <a [routerLink]="['/home']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Home</a>
+                <a [routerLink]="['/wardrobe']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Organize Outfit</a>
+                <a [routerLink]="['/upload-outfit']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Upload Outfit</a>
+                <a [routerLink]="['/ootd']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Generate Outfit</a>
             </div>
     
             <!-- Profile Dropdown (Right) -->
