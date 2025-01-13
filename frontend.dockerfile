@@ -21,8 +21,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy SSL certificates
-COPY fullchain.pem /etc/ssl/certs/fullchain.pem
-COPY privkey.pem /etc/ssl/private/privkey.pem
+COPY /home/ec2-user/fullchain.pem /etc/ssl/certs/fullchain.pem
+COPY /home/ec2-user/privkey.pem /etc/ssl/private/privkey.pem
 
 # Copy Angular build output to Nginx's HTML folder
 COPY --from=builder /app/dist/slayers-front-end/browser /usr/share/nginx/html
