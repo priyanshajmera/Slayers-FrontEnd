@@ -18,12 +18,16 @@
 
         <div class=" flex flex-row">
             <div class="hidden md:flex pr-10 items-center space-x-4 text-gray-600 font-semibold" *ngIf="isLoggedIn()">
-                <a [routerLink]="['/home']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Home</a>
-                <a [routerLink]="['/wardrobe']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Organize Outfit</a>
-                <a [routerLink]="['/upload-outfit']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Upload Outfit</a>
-                <a [routerLink]="['/ootd']" [routerLinkActive]="['text-indigo-500']" class="hover:text-indigo-400">Generate Outfit</a>
+                <a [routerLink]="['/home']" [routerLinkActive]="['text-indigo-500']"
+                    class="hover:text-indigo-400">Home</a>
+                <a [routerLink]="['/wardrobe']" [routerLinkActive]="['text-indigo-500']"
+                    class="hover:text-indigo-400">Organize Outfit</a>
+                <a [routerLink]="['/upload-outfit']" [routerLinkActive]="['text-indigo-500']"
+                    class="hover:text-indigo-400">Upload Outfit</a>
+                <a [routerLink]="['/ootd']" [routerLinkActive]="['text-indigo-500']"
+                    class="hover:text-indigo-400">Generate Outfit</a>
             </div>
-    
+
             <!-- Profile Dropdown (Right) -->
             <div class="relative  md:block" *ngIf="isLoggedIn() else login">
                 <button #dropdownButton class="flex items-center text-gray-600 focus:outline-none"
@@ -35,17 +39,17 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-    
+
                 <!-- Dropdown Menu -->
                 <div *ngIf="isDropdownOpen" #dropdownMenu
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2" style="z-index: 999;">
                     <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
                     <button class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100" (click)="logout()">
                         Logout
                     </button>
                 </div>
             </div>
-    
+
             <!-- Login Button (Right) -->
             <ng-template #login>
                 <button (click)="redirectTologin()"
@@ -57,7 +61,7 @@
         </div>
 
         <!-- Desktop Menu (Right) -->
-        
+
     </div>
 
     <!-- Mobile Menu (Dropdown) -->
@@ -111,14 +115,14 @@
                 </ul>
             </div>
 
-            
+
 
             <!-- Company -->
             <div>
                 <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Company</h3>
                 <ul class="space-y-3">
                     <li><a href="#" class="text-gray-600 hover:text-gray-900">About</a></li>
-                    
+
                 </ul>
             </div>
         </div>
