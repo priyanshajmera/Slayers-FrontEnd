@@ -1,73 +1,90 @@
-<div class="container">
-
-
-
-
-
-  <main class="main-content">
-    <div class="left-panel">
-      <div class="image-card">
-        <img [src]="outfit.image_url" alt="Outfit" class="outfit-image" />
-        <p class="outfit-name">{{ outfit.name }}</p>
+<div class="container mx-auto px-4 py-6">
+  <main class="main-content flex flex-col lg:flex-row gap-6">
+    <!-- Left Panel -->
+    <div class="left-panel flex justify-center lg:justify-start w-full lg:w-1/3">
+      <div class="image-card bg-white shadow-lg rounded-lg p-4 text-center">
+        <img [src]="outfit.image_url" alt="Outfit" class="outfit-image mx-auto rounded-lg w-full max-w-xs" />
+        <p class="outfit-name mt-4 font-semibold text-lg">{{ outfit.name }}</p>
       </div>
     </div>
-    <div class="right-panel">
-      <div class="tags-section">
-        <h2>Name</h2>
-        <input type="text" [(ngModel)]="outfit.tags" class="tags-input" />
 
+    <!-- Right Panel -->
+    <div class="right-panel w-full lg:w-2/3 bg-white shadow-lg rounded-lg p-6">
+      <!-- Tags Section -->
+      <div class="tags-section mb-6">
+        <h2 class="font-semibold text-xl mb-2">Name</h2>
+        <input
+          type="text"
+          [(ngModel)]="outfit.tags"
+          class="tags-input w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
       </div>
-      <div class="description-section">
-        <h2>Description</h2>
-        <textarea [(ngModel)]="outfit.description" class="description-input"></textarea>
+
+      <!-- Description Section -->
+      <div class="description-section mb-6">
+        <h2 class="font-semibold text-xl mb-2">Description</h2>
+        <textarea
+          [(ngModel)]="outfit.description"
+          class="description-input w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        ></textarea>
       </div>
-      <div class="category-section">
-        <h2>Category</h2>
-        <div class="radio-group">
-          <label>
-            <input type="radio" name="category" value="Top" (change)="onCategoryChange('Top')"
-              [(ngModel)]="outfit.category" />
-            Top
+
+      <!-- Category Section -->
+      <div class="category-section mb-6">
+        <h2 class="font-semibold text-xl mb-2">Category</h2>
+        <div class="radio-group flex flex-wrap gap-4">
+          <label class="flex items-center">
+            <input type="radio" name="category" value="Top" (change)="onCategoryChange('Top')" [(ngModel)]="outfit.category" />
+            <span class="ml-2">Top</span>
           </label>
-          <label>
-            <input type="radio" name="category" value="Bottom" (change)="onCategoryChange('Bottom')"
-              [(ngModel)]="outfit.category" />
-            Bottom
+          <label class="flex items-center">
+            <input type="radio" name="category" value="Bottom" (change)="onCategoryChange('Bottom')" [(ngModel)]="outfit.category" />
+            <span class="ml-2">Bottom</span>
           </label>
-          <label>
-            <input type="radio" name="category" value="Dress" (change)="onCategoryChange('Dress')"
-              [(ngModel)]="outfit.category" />
-            Dress
+          <label class="flex items-center">
+            <input type="radio" name="category" value="Dress" (change)="onCategoryChange('Dress')" [(ngModel)]="outfit.category" />
+            <span class="ml-2">Dress</span>
           </label>
-          <label>
-            <input type="radio" name="category" value="Footwear" (change)="onCategoryChange('Footwear')"
-              [(ngModel)]="outfit.category" />
-            Footwear
+          <label class="flex items-center">
+            <input type="radio" name="category" value="Footwear" (change)="onCategoryChange('Footwear')" [(ngModel)]="outfit.category" />
+            <span class="ml-2">Footwear</span>
           </label>
-          <label>
-            <input type="radio" name="category" value="Accessories" (change)="onCategoryChange('Accessories')"
-              [(ngModel)]="outfit.category" />
-            Accessories
+          <label class="flex items-center">
+            <input type="radio" name="category" value="Accessories" (change)="onCategoryChange('Accessories')" [(ngModel)]="outfit.category" />
+            <span class="ml-2">Accessories</span>
           </label>
         </div>
       </div>
 
-      <!-- Subcategory -->
-      <div *ngIf="subcategories.length > 0" class="mb-6 sub-category-section">
-        <label for="subcategory" class="block text-left text-gray-700 font-medium">Select a Sub-category:</label>
-        <select id="subcategory" [(ngModel)]="outfit.subcategory"
-          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-          <option value='' disabled>Select</option>
+      <!-- Subcategory Section -->
+      <div *ngIf="subcategories.length > 0" class="sub-category-section mb-6">
+        <label for="subcategory" class="block text-gray-700 font-medium mb-2">Select a Sub-category:</label>
+        <select
+          id="subcategory"
+          [(ngModel)]="outfit.subcategory"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option value="" disabled>Select</option>
           <option *ngFor="let sub of subcategories" [value]="sub">{{ sub }}</option>
         </select>
       </div>
-      <div class="delete-section flex flex-row justify-between">
-        <button class="btn delete" (click)="deleteOutfit()">Delete Outfit</button>
-        <div class="float-right ">
-          <button class="edit-button mx-5 bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-500"
-            (click)="saveChanges()">Save Changes</button>
-          <button class="cancel-button bg-gray-600 text-white px-4 py-2 rounded-xl hover:bg-gray-500"
-            (click)="cancel()">Cancel</button>
+
+      <!-- Delete and Save Buttons -->
+      <div class="delete-section flex flex-col lg:flex-row justify-between items-center">
+        <button class="btn delete bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 mb-4 lg:mb-0" (click)="deleteOutfit()">Delete Outfit</button>
+        <div class="flex flex-row gap-4">
+          <button
+            class="edit-button bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500"
+            (click)="saveChanges()"
+          >
+            Save Changes
+          </button>
+          <button
+            class="cancel-button bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

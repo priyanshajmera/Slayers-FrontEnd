@@ -1,23 +1,41 @@
-<div class="container ">
-    <h1>Outfit Parameters</h1>
-    <p class="text-center mb-5">Customize your outfit by selecting the parameters below.</p>
-    <div class="category" *ngFor="let category of categories">
-        <h2>{{ category.title }}</h2>
-        <div class="tags">
-            <div class="tag" *ngFor="let tag of category.tags" (click)="toggleSelection(tag)"
-                [class.selected]="tag.selected">
-                {{ tag.name }}
-            </div>
+<div class="container mx-auto mt-5 px-4 py-8 max-w-6xl">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-6">
+      Outfit Parameters
+    </h1>
+    <p class="text-center text-gray-600 mb-10 text-lg">
+      Customize your outfit by selecting the parameters below.
+    </p>
+  
+    <!-- Category Grid -->
+    <div class="category-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        class="category-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-transform transform hover:scale-105"
+        *ngFor="let category of categories"
+      >
+        <h2 class="category-title text-lg font-bold text-gray-800 mb-4">
+          {{ category.title }}
+        </h2>
+        <div class="tags-container flex flex-wrap gap-2">
+          <div
+            class="tag px-4 py-2 rounded-full border border-gray-300 cursor-pointer text-gray-600 hover:bg-indigo-500 hover:text-white transition-colors duration-200"
+            *ngFor="let tag of category.tags"
+            (click)="toggleSelection(tag)"
+            [class.selected]="tag.selected"
+          >
+            {{ tag.name }}
+          </div>
         </div>
+      </div>
     </div>
-    
-</div>
-<div class=" flex flex-col items-center">
-    <div class="mt-6">
-        <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-gray-50 rounded-xl disabled:opacity-20"
+  
+    <!-- Generate Button -->
+    <div class="flex justify-center mt-10">
+      <button
+        class="generate-btn px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
         [disabled]="!getSelectedTags().length"
-            (click)="sendSelectedTagsToBackend()">
-            Generate
-        </button>
+        (click)="sendSelectedTagsToBackend()"
+      >
+        Generate
+      </button>
     </div>
-</div>
+  </div>
